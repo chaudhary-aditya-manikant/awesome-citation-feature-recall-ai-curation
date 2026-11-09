@@ -1,0 +1,40 @@
+{
+  "dataset_gate_status": "FAIL",
+  "input_provenance_declaration": "ai-provisional",
+  "input_file_sha256": "baa71a4bbbf7dd95dc1c791e217c902c89ec1127899d18ee190d96335f2358b1",
+  "protocol_split_seed": 20261030,
+  "citation_snapshot_date": "2026-10-30",
+  "citation_rate_median": 0.4166666666666667,
+  "n_total": 2759,
+  "split_positive_counts": {
+    "train": {
+      "lower_citation_relevant": 6,
+      "higher_citation_relevant": 35,
+      "total_relevant": 41,
+      "total_records": 1655
+    },
+    "validation": {
+      "lower_citation_relevant": 0,
+      "higher_citation_relevant": 14,
+      "total_relevant": 14,
+      "total_records": 552
+    },
+    "test": {
+      "lower_citation_relevant": 1,
+      "higher_citation_relevant": 12,
+      "total_relevant": 13,
+      "total_records": 552
+    }
+  },
+  "checks": {
+    "at_least_100_deduplicated_rows": true,
+    "training_has_both_classes": true,
+    "validation_has_both_classes": true,
+    "test_has_both_classes": true,
+    "duplicate_clusters_do_not_cross_splits": true,
+    "test_has_at_least_20_lower_citation_relevant": false,
+    "test_has_at_least_20_higher_citation_relevant": false
+  },
+  "language_gate": "separate conditional gate: requires independently verified publication language and >=20 relevant test records per compared group",
+  "note": "A PASS is a mechanical data gate only; it does not authenticate human labels, licences, or annotation quality."
+}

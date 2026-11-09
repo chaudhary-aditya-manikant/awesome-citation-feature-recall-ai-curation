@@ -1,0 +1,5 @@
+route_family,requests,returned_records,min_returned,max_returned
+citation_neighbourhood,10,149,0,30
+search,88,1760,20,20
+seed_resolution,5,5,1,1
+topic,44,880,20,20

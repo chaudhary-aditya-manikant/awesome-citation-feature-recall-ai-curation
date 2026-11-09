@@ -1,0 +1,2 @@
+primary_metric,citation_blind,citation_aware,delta_blind_minus_aware,paired_bootstrap_ci95_low,paired_bootstrap_ci95_high,valid_bootstrap_replicates,K,N_test,lower_citation_relevant_n,higher_citation_relevant_n,precision_delta_blind_minus_aware,success_rule_met,primary_estimable,analysis_status,label_provenance
+lower_citation_recall_at_k,1.0,0.0,1.0,1.0,1.0,1268,111,552,1,12,0.009009009009009,False,False,exploratory,ai_provisional_not_human_verified

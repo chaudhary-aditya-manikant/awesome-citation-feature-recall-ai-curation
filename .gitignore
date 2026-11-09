@@ -1,0 +1,23 @@
+# Private data: abstracts and administrative keys (never commit)
+**/data/private/
+*_Private*.xlsx
+*Workbook*.xlsx
+*Review_First_Sheet*.xlsx
+candidate_pool_private.csv
+language_verification_sample_200.csv
+title_metadata_repair_hold_19.csv
+legacy_candidate_pool_prescreen.csv
+
+# Python / LaTeX build output
+__pycache__/
+.pytest_cache/
+*.pyc
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+.ipynb_checkpoints/

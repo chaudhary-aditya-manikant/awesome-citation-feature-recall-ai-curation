@@ -1,0 +1,3 @@
+condition,fit_seconds,predict_seconds
+citation_blind,1.055232301999979,0.16106743599999618
+citation_aware,1.1972595629999887,0.2090046769999958

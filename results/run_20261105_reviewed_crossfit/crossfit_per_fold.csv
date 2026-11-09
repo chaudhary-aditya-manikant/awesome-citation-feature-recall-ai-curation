@@ -1,0 +1,11 @@
+fold,condition,N,K,relevant,relevant_low,relevant_high,hits_overall,hits_low,hits_high
+0,citation_blind,551,111,13,1,12,13,1,12
+0,citation_aware,551,111,13,1,12,10,0,10
+1,citation_blind,551,111,13,1,12,13,1,12
+1,citation_aware,551,111,13,1,12,12,0,12
+2,citation_blind,550,110,12,3,9,12,3,9
+2,citation_aware,550,110,12,3,9,10,1,9
+3,citation_blind,551,111,13,1,12,12,1,11
+3,citation_aware,551,111,13,1,12,12,1,11
+4,citation_blind,551,111,13,1,12,13,1,12
+4,citation_aware,551,111,13,1,12,13,1,12

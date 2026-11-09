@@ -1,0 +1,6 @@
+Command: python code/run_experiment.py --input 06_Balanced_Collection_Audit_20261031/data/private/model_input_reviewed_20261105_private.csv --output results/run_20261105_reviewed_frozen --test-size 0.2 --seed 20261030 --bootstrap 2000 --snapshot-date 2026-10-30 --data-provenance ai-provisional
+Input provenance declaration: ai-provisional (not independently authenticated by script)
+Input SHA-256: cd2b332f12cd9989525cf180fdf75fb1ba43f64c64464e7b049a62641bb91d2a
+UTC completed: 2026-11-05T06:30:35.657959+00:00
+Rows: 2754; train: 1652; test: 551
+Primary delta (blind - aware): 1.000000

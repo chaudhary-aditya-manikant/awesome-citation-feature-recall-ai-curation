@@ -1,0 +1,13 @@
+duplicate_group_id,openalex_id,review_status,canonical_openalex_id,decision_note
+MANUAL_ASREVIEW_2021,https://openalex.org/W3111278950,resolved_duplicate_version,,
+MANUAL_ASREVIEW_2021,https://openalex.org/W3128349626,resolved_duplicate_version,,
+MANUAL_ARGUMENT_NUMBERS_2022,https://openalex.org/W4312384381,resolved_preprint_to_journal,,
+MANUAL_ARGUMENT_NUMBERS_2022,https://openalex.org/W4293071470,resolved_preprint_to_journal,,
+MANUAL_BJB_ANNIVERSARY_2022,https://openalex.org/W4313337904,resolved_issue_vs_article,,
+MANUAL_BJB_ANNIVERSARY_2022,https://openalex.org/W4313337862,resolved_issue_vs_article,,
+MANUAL_GENDER_STEREOTYPES_2022,https://openalex.org/W4313388714,resolved_repository_to_journal,,
+MANUAL_GENDER_STEREOTYPES_2022,https://openalex.org/W4313338761,resolved_repository_to_journal,,
+MANUAL_SVPOW_BLOG_2018,https://openalex.org/W4387069793,out_of_scope_same_blog_post,,
+MANUAL_SVPOW_BLOG_2018,https://openalex.org/W4415078251,out_of_scope_same_blog_post,,
+MANUAL_NLG_DOI_MISMATCH_2023,https://openalex.org/W4316115912,resolved_publisher_doi_record_of_record,https://openalex.org/W4319992562,Publisher page https://www.inderscience.com/info/inarticle.php?artid=128292 confirms DOI 10.1504/IJIIDS.2023.128292; retain W4319992562 and exclude W4316115912 as duplicate conflicting DOI metadata. DBLP discrepancy documented.
+MANUAL_NLG_DOI_MISMATCH_2023,https://openalex.org/W4319992562,resolved_publisher_doi_record_of_record,https://openalex.org/W4319992562,Publisher page https://www.inderscience.com/info/inarticle.php?artid=128292 confirms DOI 10.1504/IJIIDS.2023.128292; retain W4319992562 and exclude W4316115912 as duplicate conflicting DOI metadata. DBLP discrepancy documented.

@@ -1,0 +1,19 @@
+{
+  "source": "candidate_pool_duplicate_reviewed.csv",
+  "pool_version": "LEGACY_2026-10-30_NOT_FOR_FINAL_MODEL",
+  "records": 3000,
+  "prescreen_status_counts": {
+    "RETAIN_FOR_HUMAN_SCOPE_SCREEN": 2322,
+    "REVIEW_PUBLICATION_TYPE_AND_SCOPE": 640,
+    "EXCLUDE_RETRACTED_RECORD": 5,
+    "EXCLUDE_DUPLICATE_COPY": 4,
+    "EXCLUDE_NO_USABLE_TITLE": 25,
+    "HOLD_DUPLICATE_DOI_SOURCE_CHECK": 2,
+    "EXCLUDE_OUT_OF_SCOPE_NON_SCHOLARLY_BLOG": 2
+  },
+  "human_eligibility_decisions_assigned": 0,
+  "human_relevance_labels_assigned": 0,
+  "language_verification_completed": 0,
+  "model_use_authorized": false,
+  "interpretation": "Objective metadata prescreen only. Records retained for human screening are NOT yet labelled relevant or eligible; legacy pool is not accepted for final model evaluation because its retrieval year distribution and route coverage were inadequate."
+}
