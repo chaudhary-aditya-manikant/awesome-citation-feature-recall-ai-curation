@@ -97,6 +97,13 @@ python -m pytest -q tests                        # 58 tests, ~30 s
 bash scripts/run_all.sh <model_input.csv> <tag> ai
 ```
 
+**Library versions matter for exact reproduction.** `requirements.txt` pins the versions that reproduce every committed number, checked on Linux and on the author's Windows laptop (14 November 2026). With older libraries (scikit-learn 1.5.2, numpy 2.1.2) the retrained Study 1 rankers gave the same K = 20% counts and point estimates (7/7 vs 3/7, difference 0.571), but the bootstrap interval moved slightly (0.167–1.00 instead of 0.143–1.00). Use a clean environment:
+
+```bash
+python -m venv ~/aitr_env && source ~/aitr_env/Scripts/activate    # Linux/macOS: source ~/aitr_env/bin/activate
+python -m pip install -r requirements.txt
+```
+
 **Live check (any OS):** `python scripts/viva_demo.py` re-runs the tests and post-hoc rankers and confirms the outputs are identical to the committed ones. Add `--data <private model input>` to refit both rankers as well (about 1.5 minutes).
 
 `run_all.sh` writes `results/<tag>_preflight`, `results/<tag>_frozen`, `results/<tag>_crossfit` (with figures) and `results/<tag>_posthoc_comparators`. Seeds are fixed (split 20261030, bootstrap 20261031); re-running on the same input reproduces the committed result files exactly. The whole analysis runs on a CPU in under a minute. In Colab, use `notebooks/MNS2026008_Colab_Rerun.ipynb`.

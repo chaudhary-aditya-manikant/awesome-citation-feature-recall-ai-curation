@@ -102,7 +102,8 @@ Detailed dated records: `docs/06_Evidence_and_Logs/AI_Assistance_and_Verificatio
 11. **Fragile id detection.** The AI's first two fixes for finding the OpenAlex id column still returned 0 records on real data; the third version checks every column and was tested on four layouts before reuse.
 12. **Rate limit not anticipated.** The live OpenAlex download stopped twice at 90,100 of 166,085 records. The citation counts stored in SYNERGY were used instead, recorded as deviation D1 before any result.
 13. **Pilot overstated the effect size.** Study 1's point estimate (0.57 on 7 records) was about ten times the confirmed effect (0.052 on 977). The pilot is reported as exploratory for this reason.
-14. **Unverifiable claim removed.** A sentence stating what a cited study did not report was reduced to what could be checked.
+14. **Dependencies not pinned.** The AI's `requirements.txt` allowed a range of library versions. On the author's laptop (scikit-learn 1.5.2) the retrained Study 1 rankers gave the same counts and point estimates but a slightly different bootstrap interval (0.167 instead of 0.143). The author re-ran in a clean environment with the original versions, which reproduced every number, and the versions are now pinned.
+15. **Unverifiable claim removed.** A sentence stating what a cited study did not report was reduced to what could be checked.
 
 ---
 

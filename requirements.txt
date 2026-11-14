@@ -1,7 +1,9 @@
-numpy>=1.24,<3
-pandas>=2.0,<4
-scikit-learn>=1.3,<2
-scipy>=1.10,<2
+# Exact versions that reproduce the committed results (verified on Linux and on Windows, Python 3.12).
+# Other versions run, but retraining can shift the bootstrap intervals slightly (see README, Reproduce).
+numpy==2.5.3
+pandas==3.0.5
+scikit-learn==1.9.1
+scipy==1.18.1
 openpyxl>=3.1,<4
 matplotlib>=3.7,<4
 pytest>=7

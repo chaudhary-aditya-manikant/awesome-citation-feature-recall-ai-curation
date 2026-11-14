@@ -9,7 +9,7 @@ Baseline: TF-IDF (title + abstract, 1–2-grams, min_df 2, sublinear tf) + stand
 | No `split_group_id` crosses train / validation / test | Pass | leakage assertion in both runners; `results/run_20261105_reviewed_frozen/split_manifest.csv` |
 | Every partition contains both classes | Pass (38 / 13 / 13 relevant) | `results/run_20261105_reviewed_preflight/preflight_gate_report.json` |
 | Scaling and TF-IDF fitted on training data only | Pass | pipeline design; tests |
-| Deterministic results with fixed seeds | Pass | re-runs reproduce identical metric files |
+| Deterministic results with fixed seeds | Pass with the pinned library versions (Linux and Windows); with scikit-learn 1.5.2 the K = 20% counts matched but the bootstrap interval differed slightly | `scripts/viva_demo.py`; `requirements.txt` |
 | Settings in config match code defaults | Pass | `tests/test_config_matches_code.py` |
 | Full test suite | 58 passed | `python -m pytest -q tests` |
 
