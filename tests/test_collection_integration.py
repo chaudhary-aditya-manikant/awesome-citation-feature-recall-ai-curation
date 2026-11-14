@@ -4,7 +4,7 @@ import json
 import sys
 from pathlib import Path
 
-MODULE_PATH = Path(__file__).resolve().parents[1] / "code" / "collect_openalex_candidates.py"
+MODULE_PATH = Path(__file__).resolve().parents[1] / "src" / "collect_openalex_candidates.py"
 spec = importlib.util.spec_from_file_location("collector_integration", MODULE_PATH)
 collector = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(collector)

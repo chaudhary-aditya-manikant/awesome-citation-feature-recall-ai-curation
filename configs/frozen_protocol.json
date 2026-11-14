@@ -1,0 +1,17 @@
+{
+  "_note": "Frozen experimental settings (Prompt 07 blueprint + Amendments A2/A3). These values are the defaults hard-coded in src/run_experiment.py and src/run_crossfit_exploratory.py; tests/test_config_matches_code.py fails if they drift apart.",
+  "citation_snapshot_date": "2026-10-30",
+  "split": {"method": "StratifiedGroupKFold", "n_splits": 5, "group_column": "split_group_id", "seed": 20261030,
+            "frozen_single_split": {"test_fold": 0, "validation_fold": 1, "train_folds": [2, 3, 4]}},
+  "model": {"text_features": "TF-IDF(title + abstract)", "ngram_range": [1, 2], "min_df": 2, "sublinear_tf": true,
+            "numeric_features": ["standardised publication year"],
+            "classifier": "LogisticRegression", "C": 1.0, "class_weight": "balanced", "solver": "liblinear", "max_iter": 2000},
+  "conditions": {"A_citation_blind": "no citation feature", "B_citation_aware": "adds standardised log(1 + citations)"},
+  "citation_groups": {"rate": "citations / max(1, 2026 - year + 1)", "split": "pool median; lower group = rate <= median"},
+  "metrics": {"primary": "lower-citation Recall@K", "k_fraction": 0.20, "sensitivity_k_fractions": [0.10, 0.30],
+              "secondary": ["overall Recall@K", "Precision@K", "higher-citation Recall@K"], "tie_break": "openalex_id"},
+  "dataset_gate": {"min_relevant_lower_citation_in_test": 20, "min_relevant_higher_citation_in_test": 20},
+  "estimability_guard": {"min_primary_denominator": 10, "note": "added after observing a degenerate result; disclosed in Amendment A3 addendum"},
+  "bootstrap": {"replicates": 2000, "seed": 20261031, "resampling_unit": "split_group_id clusters (paired)"},
+  "success_rule": "delta_low > 0 AND bootstrap CI lower bound > 0 AND precision loss of A <= 0.05 AND primary estimable"
+}

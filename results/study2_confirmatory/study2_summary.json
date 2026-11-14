@@ -1,0 +1,14 @@
+{
+  "status": "CONFIRMATORY",
+  "gate_pass": true,
+  "H1_supported": true,
+  "relevant_lower": 977,
+  "relevant_higher": 1768,
+  "datasets": 20,
+  "records": 150154,
+  "relevant": 2745,
+  "input_sha256": "2f06b974b29b10ccd74df94700307908a611435bd72dac88c80fd95014a2363a",
+  "protocol_sha256": "d65b3d03cf318a0e10fa2916122b2c9a9b26b2e58675df0484f988205eeaa7c5",
+  "bootstrap_replicates": 2000,
+  "citation_reference_year": 2022
+}

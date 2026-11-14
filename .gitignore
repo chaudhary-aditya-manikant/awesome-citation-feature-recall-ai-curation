@@ -21,3 +21,10 @@ __pycache__/
 *.fdb_latexmk
 *.synctex.gz
 .ipynb_checkpoints/
+
+# Viva re-run outputs
+results/_viva_check/
+
+# Study 2 downloaded data (contains abstracts)
+data/study2/synergy_model_input.csv
+data/study2/openalex_cache.csv

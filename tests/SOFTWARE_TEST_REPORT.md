@@ -16,7 +16,7 @@ Coverage includes the original validation and bootstrap tests; balanced collecto
 
 ## Syntax check
 
-Command: `python -m py_compile code/*.py`  
+Command: `python -m py_compile src/*.py`  
 Observed: passed.
 
 ## Synthetic experiment smoke tests

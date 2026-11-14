@@ -1,0 +1,24 @@
+{
+  "status": "EXPLORATORY_CROSSFIT_AMENDMENT_A3|MIXED_LABELS_REVIEWER_AND_AI_PROVISIONAL",
+  "label_status_counts": {
+    "ai_provisional": 2105,
+    "single_reviewer_audited": 642
+  },
+  "input_file_sha256": "4e8107fd3f1ae23df5aefec33e4e5f6018d8dba703892d2ec9fd520ed32eff14",
+  "n_records": 2747,
+  "n_relevant": 67,
+  "n_relevant_lower_citation": 10,
+  "n_relevant_higher_citation": 57,
+  "citation_rate_median": 0.4166666666666667,
+  "split_seed": 20261030,
+  "bootstrap_seed": 20261031,
+  "bootstrap_replicates_requested": 2000,
+  "metadata_language_relevant_counts": {
+    "en": 62,
+    "id": 2,
+    "th": 1,
+    "es": 1,
+    "pt": 1
+  },
+  "note": "Pool-relative, exploratory. The frozen dataset gate failed; no confirmatory claim is supported."
+}

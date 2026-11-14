@@ -1,0 +1,145 @@
+{
+  "source": "SYNERGY (synergy-dataset package)",
+  "citation_source": "package",
+  "synergy_set": "synergy",
+  "synergy_version": "package default",
+  "fetched_on": "2026-11-14",
+  "frozen_snapshot_date": "2026-11-13",
+  "citation_reference_year": 2022,
+  "records_read": 169288,
+  "records_kept": 168856,
+  "dropped_missing_metadata": 432,
+  "per_dataset": [
+    {
+      "dataset": "Appenzeller-Herzog_2019",
+      "records": 2868,
+      "included": 26
+    },
+    {
+      "dataset": "Bos_2018",
+      "records": 4878,
+      "included": 10
+    },
+    {
+      "dataset": "Brouwer_2019",
+      "records": 38076,
+      "included": 62
+    },
+    {
+      "dataset": "Chou_2003",
+      "records": 1906,
+      "included": 15
+    },
+    {
+      "dataset": "Chou_2004",
+      "records": 1622,
+      "included": 9
+    },
+    {
+      "dataset": "Donners_2021",
+      "records": 257,
+      "included": 15
+    },
+    {
+      "dataset": "Hall_2012",
+      "records": 8793,
+      "included": 104
+    },
+    {
+      "dataset": "Jeyaraman_2020",
+      "records": 1173,
+      "included": 96
+    },
+    {
+      "dataset": "Leenaars_2019",
+      "records": 5767,
+      "included": 17
+    },
+    {
+      "dataset": "Leenaars_2020",
+      "records": 7169,
+      "included": 582
+    },
+    {
+      "dataset": "Meijboom_2021",
+      "records": 882,
+      "included": 37
+    },
+    {
+      "dataset": "Menon_2022",
+      "records": 975,
+      "included": 74
+    },
+    {
+      "dataset": "Moran_2021",
+      "records": 5199,
+      "included": 111
+    },
+    {
+      "dataset": "Muthu_2021",
+      "records": 2719,
+      "included": 336
+    },
+    {
+      "dataset": "Nelson_2002",
+      "records": 365,
+      "included": 80
+    },
+    {
+      "dataset": "Oud_2018",
+      "records": 950,
+      "included": 20
+    },
+    {
+      "dataset": "Radjenovic_2013",
+      "records": 5935,
+      "included": 48
+    },
+    {
+      "dataset": "Sep_2021",
+      "records": 271,
+      "included": 40
+    },
+    {
+      "dataset": "Smid_2020",
+      "records": 2622,
+      "included": 27
+    },
+    {
+      "dataset": "Walker_2018",
+      "records": 48153,
+      "included": 759
+    },
+    {
+      "dataset": "Wassenaar_2017",
+      "records": 7657,
+      "included": 111
+    },
+    {
+      "dataset": "Wolters_2018",
+      "records": 4272,
+      "included": 19
+    },
+    {
+      "dataset": "van_Dis_2020",
+      "records": 9114,
+      "included": 72
+    },
+    {
+      "dataset": "van_de_Schoot_2018",
+      "records": 4538,
+      "included": 38
+    },
+    {
+      "dataset": "van_der_Valk_2021",
+      "records": 725,
+      "included": 89
+    },
+    {
+      "dataset": "van_der_Waal_2022",
+      "records": 1970,
+      "included": 33
+    }
+  ],
+  "sha256": "2f06b974b29b10ccd74df94700307908a611435bd72dac88c80fd95014a2363a"
+}

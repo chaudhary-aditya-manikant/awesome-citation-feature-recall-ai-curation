@@ -1,0 +1,10 @@
+{
+  "status": "ADDITIONAL_DESCRIPTIVE_NOT_A_PREREGISTERED_CONTRAST",
+  "contrast": "citation_blind - citation_aware",
+  "metric": "recall_higher",
+  "point": -0.03506787330316741,
+  "ci95_low": -0.047565834356665254,
+  "ci95_high": -0.025595872031654716,
+  "bootstrap_replicates": 2000,
+  "recomputed_counts_identical": true
+}

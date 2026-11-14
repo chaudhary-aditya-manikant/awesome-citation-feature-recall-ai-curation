@@ -1,0 +1,6 @@
+Command: python src/run_experiment.py --input /home/claude/work/v4/AITR_MNS2026008_Working_v4/06_Balanced_Collection_Audit_20261031/data/private/model_input_spotcheck_20261110_private.csv --output results/run_20261110_spotcheck_frozen --test-size 0.2 --seed 20261030 --bootstrap 2000 --snapshot-date 2026-10-30 --data-provenance ai-provisional
+Input provenance declaration: ai-provisional (not independently authenticated by script)
+Input SHA-256: 4e8107fd3f1ae23df5aefec33e4e5f6018d8dba703892d2ec9fd520ed32eff14
+UTC completed: 2026-11-10T05:22:11.926558+00:00
+Rows: 2747; train: 1648; test: 549
+Primary delta (blind - aware): 1.000000

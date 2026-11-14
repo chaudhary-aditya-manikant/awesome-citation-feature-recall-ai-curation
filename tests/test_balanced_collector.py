@@ -1,7 +1,7 @@
 from pathlib import Path
 import importlib.util
 
-MODULE_PATH = Path(__file__).resolve().parents[1] / "code" / "collect_openalex_candidates_balanced.py"
+MODULE_PATH = Path(__file__).resolve().parents[1] / "src" / "collect_openalex_candidates_balanced.py"
 spec = importlib.util.spec_from_file_location("balanced_collector", MODULE_PATH)
 collector = importlib.util.module_from_spec(spec)
 assert spec and spec.loader

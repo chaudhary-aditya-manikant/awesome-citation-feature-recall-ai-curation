@@ -1,0 +1,8 @@
+{
+  "status": "POST_HOC_NOT_PREREGISTERED|EXPLORATORY_GATE_FAILED",
+  "added_on": "2026-11-10",
+  "reserved_fraction": 0.5,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261031,
+  "source_predictions": "crossfit_out_of_fold_predictions.csv"
+}

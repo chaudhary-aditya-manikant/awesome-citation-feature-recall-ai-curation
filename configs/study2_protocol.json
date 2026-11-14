@@ -1,0 +1,43 @@
+{
+  "_note": "Study 2 confirmatory protocol. Every value marked DECIDE is the author's decision; fill it in, write your reason in docs/PREREGISTRATION_v2.md, then commit BEFORE running src/study2_fetch_synergy.py. src/run_study2.py refuses to run while any DECIDE value remains.",
+  "frozen_on": "2026-11-13",
+  "data": {
+    "source": "SYNERGY systematic-review benchmark (human inclusion labels)",
+    "datasets": "all",
+    "min_inclusions_per_dataset": 20,
+    "citation_snapshot_date": "2026-11-13"
+  },
+  "model": "identical to Study 1: TF-IDF(title+abstract, 1-2 grams, min_df 2) + standardised year [+ standardised log1p citations], LogisticRegression C=1 balanced liblinear",
+  "split": {
+    "method": "StratifiedGroupKFold, cross-fitted within each dataset",
+    "n_splits": 5,
+    "seed": 20261030
+  },
+  "citation_groups": "within each dataset: rate = citations / max(1, snapshot_year - year + 1); lower group = rate <= dataset median",
+  "conditions": [
+    "citation_blind",
+    "citation_aware",
+    "citation_only",
+    "fair_rerank"
+  ],
+  "fair_rerank_reserved_fraction": 0.5,
+  "k_fraction": 0.2,
+  "sensitivity_k_fractions": [
+    0.1,
+    0.3
+  ],
+  "gate": {
+    "min_relevant_lower_citation": 50,
+    "min_relevant_higher_citation": 50
+  },
+  "bootstrap": {
+    "replicates": 2000,
+    "seed": 20261031,
+    "unit": "split_group_id clusters within dataset x fold (paired)"
+  },
+  "success_rule": {
+    "primary": "H1 supported if (blind - aware) lower-citation Recall@20% > 0 AND 95% CI lower bound > 0 AND gate passed",
+    "max_overall_precision_loss_of_blind": 0.05
+  },
+  "_decided_by": "Aditya Chaudhary (MNS2026008), 13 November 2026, before any SYNERGY data were downloaded"
+}

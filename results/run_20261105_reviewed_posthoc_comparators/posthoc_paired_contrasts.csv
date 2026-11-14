@@ -1,0 +1,10 @@
+contrast,metric,point,ci95_low,ci95_high,valid_replicates
+citation_blind - citation_only,recall_lower,1.0,1.0,1.0,1998
+citation_blind - citation_only,recall_overall,0.40625,0.2902760545905707,0.53522384305835,2000
+citation_blind - citation_only,precision,0.04693140794223827,0.03068592057761732,0.06678700361010831,2000
+fair_rerank - citation_aware,recall_lower,0.5714285714285714,0.1428571428571429,1.0,1998
+fair_rerank - citation_aware,recall_overall,0.015625,-0.07272727272727275,0.09677419354838712,2000
+fair_rerank - citation_aware,precision,0.0018050541516245466,-0.009025270758122733,0.010830324909747294,2000
+citation_blind - fair_rerank,recall_lower,0.0,0.0,0.0,1998
+citation_blind - fair_rerank,recall_overall,0.078125,0.016129032258064502,0.14492753623188404,2000
+citation_blind - fair_rerank,precision,0.009025270758122747,0.0018050541516245466,0.016245487364620947,2000

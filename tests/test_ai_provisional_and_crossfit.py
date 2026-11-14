@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np, pandas as pd, pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "code"))
+sys.path.insert(0, str(ROOT / "src"))
 from run_experiment import load_and_validate  # noqa: E402
 
 
@@ -34,7 +34,7 @@ def test_ai_provisional_accepted_only_with_flag(tmp_path):
 
 def test_runner_requires_matching_provenance(tmp_path):
     p = tmp_path / "d.csv"; _frame().to_csv(p, index=False)
-    r = subprocess.run([sys.executable, str(ROOT / "code/run_experiment.py"), "--input", str(p),
+    r = subprocess.run([sys.executable, str(ROOT / "src/run_experiment.py"), "--input", str(p),
                         "--output", str(tmp_path / "o"), "--snapshot-date", "2026-10-30",
                         "--allow-ai-provisional-labels"], capture_output=True, text=True)
     assert r.returncode != 0 and "requires --data-provenance ai-provisional" in r.stderr
@@ -42,7 +42,7 @@ def test_runner_requires_matching_provenance(tmp_path):
 
 def test_gate_failure_stops_without_exploratory_flag(tmp_path):
     p = tmp_path / "d.csv"; _frame().to_csv(p, index=False)
-    r = subprocess.run([sys.executable, str(ROOT / "code/run_experiment.py"), "--input", str(p),
+    r = subprocess.run([sys.executable, str(ROOT / "src/run_experiment.py"), "--input", str(p),
                         "--output", str(tmp_path / "o"), "--snapshot-date", "2026-10-30",
                         "--data-provenance", "ai-provisional", "--allow-ai-provisional-labels",
                         "--bootstrap", "200"], capture_output=True, text=True)
@@ -52,7 +52,7 @@ def test_gate_failure_stops_without_exploratory_flag(tmp_path):
 def test_exploratory_run_is_stamped_and_not_estimable(tmp_path):
     p = tmp_path / "d.csv"; _frame().to_csv(p, index=False)
     out = tmp_path / "o"
-    r = subprocess.run([sys.executable, str(ROOT / "code/run_experiment.py"), "--input", str(p),
+    r = subprocess.run([sys.executable, str(ROOT / "src/run_experiment.py"), "--input", str(p),
                         "--output", str(out), "--snapshot-date", "2026-10-30",
                         "--data-provenance", "ai-provisional", "--allow-ai-provisional-labels",
                         "--exploratory-after-gate-failure", "--bootstrap", "200"], capture_output=True, text=True)
@@ -66,9 +66,9 @@ def test_exploratory_run_is_stamped_and_not_estimable(tmp_path):
 def test_crossfit_runs_and_stamps(tmp_path):
     p = tmp_path / "d.csv"; _frame().to_csv(p, index=False)
     out = tmp_path / "cf"
-    r = subprocess.run([sys.executable, str(ROOT / "code/run_crossfit_exploratory.py"), "--input", str(p),
+    r = subprocess.run([sys.executable, str(ROOT / "src/run_crossfit_exploratory.py"), "--input", str(p),
                         "--output", str(out), "--snapshot-date", "2026-10-30", "--bootstrap", "100",
-                        "--allow-ai-provisional-labels"], capture_output=True, text=True, cwd=ROOT / "code")
+                        "--allow-ai-provisional-labels"], capture_output=True, text=True, cwd=ROOT / "src")
     assert r.returncode == 0, r.stderr
     s = (out / "crossfit_summary.json").read_text()
     assert "AI_PROVISIONAL_LABELS_NOT_HUMAN_VERIFIED" in s
@@ -79,7 +79,7 @@ def test_crossfit_runs_and_stamps(tmp_path):
 def test_crossfit_accepts_merge_output_without_ai_confidence(tmp_path):
     df = _frame(); df["screening_id"] = [f"SCR{i}" for i in range(len(df))]
     p = tmp_path / "d.csv"; df.to_csv(p, index=False)
-    r = subprocess.run([sys.executable, str(ROOT / "code/run_crossfit_exploratory.py"), "--input", str(p),
+    r = subprocess.run([sys.executable, str(ROOT / "src/run_crossfit_exploratory.py"), "--input", str(p),
                         "--output", str(tmp_path / "cf"), "--snapshot-date", "2026-10-30", "--bootstrap", "50",
-                        "--allow-ai-provisional-labels"], capture_output=True, text=True, cwd=ROOT / "code")
+                        "--allow-ai-provisional-labels"], capture_output=True, text=True, cwd=ROOT / "src")
     assert r.returncode == 0, r.stderr

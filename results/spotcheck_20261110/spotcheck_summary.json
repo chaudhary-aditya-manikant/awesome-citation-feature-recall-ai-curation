@@ -1,0 +1,20 @@
+{
+  "amendment": "A4 blind spot-check of AI-only labels",
+  "sample_seed": 20261110,
+  "n_checked": 200,
+  "agreement_with_ai": 190,
+  "agreement_rate": 0.95,
+  "author_relevant": 3,
+  "author_uncertain": 7,
+  "missed_relevant_rate": 0.015,
+  "missed_relevant_rate_ci95": [
+    0.003104107621553509,
+    0.0432082819177126
+  ],
+  "estimated_missed_relevant_in_unreviewed": [
+    7.2,
+    34.6,
+    99.6
+  ],
+  "n_unreviewed": 2305
+}

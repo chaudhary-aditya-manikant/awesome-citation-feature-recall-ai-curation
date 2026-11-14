@@ -1,0 +1,13 @@
+{
+  "records_checked": 200,
+  "changed_to_relevant": 3,
+  "changed_to_uncertain_and_excluded": 7,
+  "relevant_before": 64,
+  "relevant_after": 67,
+  "decided_before": 2754,
+  "decided_after": 2747,
+  "label_status_after": {
+    "ai_provisional": 2105,
+    "single_reviewer_audited": 642
+  }
+}

@@ -1,7 +1,7 @@
 import sys
 from pathlib import Path
 import pandas as pd, pytest
-ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT / "code"))
+ROOT = Path(__file__).resolve().parents[1]; sys.path.insert(0, str(ROOT / "src"))
 from merge_review_first import merge  # noqa: E402
 
 def _setup(tmp_path, your=("relevant", "", "not_relevant")):
