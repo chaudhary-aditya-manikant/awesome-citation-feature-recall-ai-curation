@@ -12,7 +12,6 @@ Outputs go to results/_viva_check/ (deleted and rebuilt each time, never committ
 from __future__ import annotations
 
 import argparse
-import filecmp
 import shutil
 import subprocess
 import sys
@@ -41,7 +40,18 @@ def run(args: list[str], cwd: Path = ROOT, quiet: bool = True) -> None:
 
 
 def same(new: Path, old: Path) -> bool:
-    ok = filecmp.cmp(new, old, shallow=False)
+    """Compare a re-run CSV with the committed one: same shape, same text cells, numbers equal to 9 decimals.
+    (A byte comparison would fail on Windows only because of line endings.)"""
+    import numpy as np
+    import pandas as pd
+    a, b = pd.read_csv(new), pd.read_csv(old)
+    ok = a.shape == b.shape and list(a.columns) == list(b.columns)
+    if ok:
+        for c in a.columns:
+            if pd.api.types.is_numeric_dtype(a[c]) and pd.api.types.is_numeric_dtype(b[c]):
+                ok &= bool(np.allclose(a[c].to_numpy(float), b[c].to_numpy(float), rtol=0, atol=1e-9, equal_nan=True))
+            else:
+                ok &= a[c].astype(str).tolist() == b[c].astype(str).tolist()
     print(f"  {'IDENTICAL' if ok else 'DIFFERENT'}  {new.name}  vs committed {old.parent.name}/{old.name}")
     return ok
 
