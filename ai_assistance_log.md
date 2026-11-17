@@ -58,7 +58,7 @@ Detailed dated records: `docs/06_Evidence_and_Logs/AI_Assistance_and_Verificatio
 **D. Experiment and analysis**
 - *AI proposal:* runner, cross-fitted analysis, sensitivity and error analysis, figures.
 - *Human decision:* when the dataset gate failed, the author approved reporting the result as exploratory instead of confirmatory (Amendment A3, recorded before fitting).
-- *Verification:* seeds fixed; re-runs reproduce committed result files byte for byte; 58 tests pass.
+- *Verification:* seeds fixed; re-runs reproduce committed result files byte for byte; 59 tests pass.
 - *Outcome:* `results/run_20261105_reviewed_*`, Figures 1–2.
 
 **D2. Post-hoc reference rankers (10 November 2026)**

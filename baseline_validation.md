@@ -11,7 +11,7 @@ Baseline: TF-IDF (title + abstract, 1–2-grams, min_df 2, sublinear tf) + stand
 | Scaling and TF-IDF fitted on training data only | Pass | pipeline design; tests |
 | Deterministic results with fixed seeds | Pass with the pinned library versions (Linux and Windows); with scikit-learn 1.5.2 the K = 20% counts matched but the bootstrap interval differed slightly | `scripts/viva_demo.py`; `requirements.txt` |
 | Settings in config match code defaults | Pass | `tests/test_config_matches_code.py` |
-| Full test suite | 58 passed | `python -m pytest -q tests` |
+| Full test suite | 59 passed | `python -m pytest -q tests` |
 
 ## Measured baseline behaviour
 | Setting | Citation-blind baseline | Source |

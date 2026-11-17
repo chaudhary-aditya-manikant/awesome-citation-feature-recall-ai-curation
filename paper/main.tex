@@ -30,11 +30,9 @@ relevant but rarely cited papers reach the top of a screening queue. Two Logisti
 differ only in a standardised $\log(1+\text{citations})$ feature are compared in two studies. Study 1, a
 pilot, used a quota-stratified pool of 2,790 OpenAlex records on AI literature curation, screened by an AI
 assistant with author review of the 458 relevant and boundary records. Only 7 of its 64 relevant records
-were rarely cited, so the pre-registered dataset gate failed and its results are exploratory: in a
-cross-fitted analysis the citation-blind ranker placed 7 of 7 lower-citation relevant records in the top
-20\% of the queue against 3 of 7 for the citation-aware ranker (paired difference 0.57; 95\%
-cluster-bootstrap interval 0.14 to 1.00). A blind re-screen of 200 AI-only labels found 3 missed relevant
-records, all rarely cited; with them included the result was 9 of 10 against 3 of 10. Study 2 tested the
+were rarely cited, so the pre-registered dataset gate failed and its results are exploratory: the
+citation-blind ranker placed 7 of 7 lower-citation relevant records in the top 20\% of the queue against 3
+of 7 for the citation-aware ranker (paired difference 0.57; 95\% interval 0.14 to 1.00). Study 2 tested the
 same hypothesis under a new pre-registration on the SYNERGY benchmark of systematic reviews with human
 inclusion labels (20 reviews, 150,154 records, 2,745 relevant). The gate passed with 977 lower-citation
 and 1,768 higher-citation relevant records. The citation-blind ranker retrieved 742 of 977 lower-citation
@@ -66,22 +64,15 @@ lower-citation records recovered 0.081 of lower-citation recall at a precision c
 \label{sec:intro}
 
 Many tools that help researchers find and screen literature rank records partly by how often they have
-been cited. Google Scholar has been shown to weight citation counts heavily in its ranking
-\cite{beel2009citation}, and scholarly recommenders are known to over-expose popular items
-\cite{farber2023biases,klimashevskaia2024survey}. Citation counts are themselves shaped by cumulative
-advantage \cite{merton1968matthew} and by factors unrelated to a study's content
-\cite{duyx2017scientific,lund2025predictors}. If a ranker learns that relevant papers tend to be highly
-cited, it may rank relevant but rarely cited papers lower, and in a prioritised screening workflow those
-papers are the ones most likely to be left unread when screening stops \cite{callaghan2020stopping}.
-
-Evaluations of screening tools usually report recall for a whole collection
-\cite{przybyla2018prioritising,vandeschoot2021asreview,aigner2026comparing}. Whether that recall is
-lower for less-cited papers is rarely measured: the author's earlier survey of recall bias in AI
-literature curation \cite{chaudhary2026recall} found that evaluations of screening and citation-searching
-tools report recall for whole collections and never split it by citation band or language, and named this
-as an open gap. This study takes up that gap and isolates one mechanism: it trains two
-otherwise identical rankers, one with and one without an explicit citation-count feature, and compares
-how many relevant lower-citation records each places in the top $K$ of a held-out queue.
+been cited. If a ranker learns that relevant papers tend to be highly cited, it may rank relevant but
+rarely cited papers lower, and in a prioritised screening workflow those papers are the ones most likely
+to be left unread when screening stops. Evaluations of screening tools usually report recall for a whole
+collection, so this would go unnoticed. The author's earlier survey of recall bias in AI literature
+curation \cite{chaudhary2026recall} found that evaluations of screening and citation-searching tools never
+split recall by citation band or language, and named this as an open gap. This study takes up that gap
+and isolates one mechanism: it trains two otherwise identical rankers, one with and one without an
+explicit citation-count feature, and compares how many relevant lower-citation records each places in the
+top $K$ of a held-out queue.
 
 The paper reports two studies. Study 1 (Sections~\ref{sec:data}--\ref{sec:results}) is a pilot on a
 small, carefully audited pool of AI literature-curation records; its pre-registered data gate failed, so
@@ -89,6 +80,37 @@ its results are exploratory. Study 2 (Section~\ref{sec:study2}) tests the hypoth
 suggested, under a separate pre-registration written before its data were downloaded, on a large public
 benchmark with human inclusion labels. Neither study estimates how any commercial search engine behaves,
 and neither tests language effects.
+
+The contributions are empirical, not methodological. The ranker, features and metrics are standard; what
+is new here is the measurement. (1) A controlled ablation that measures recall separately for rarely and
+highly cited relevant papers. (2) A pre-registered confirmation on 20 systematic reviews showing that the
+citation feature shifts recall from rarely cited to highly cited papers while leaving overall recall
+unchanged. (3) A simple reserved-slot re-rank that recovers part of the lost recall.
+
+\section{Related Work}
+\label{sec:related}
+
+\textbf{Citation counts as a ranking signal.} Google Scholar has been shown to weight citation counts
+heavily in its ranking \cite{beel2009citation}, and scholarly recommenders are known to over-expose
+popular items \cite{farber2023biases,klimashevskaia2024survey}. Citation counts are themselves shaped by
+cumulative advantage \cite{merton1968matthew} and by factors unrelated to a study's content
+\cite{duyx2017scientific,lund2025predictors}, so a ranker that rewards them can reward visibility rather
+than relevance.
+
+\textbf{Screening prioritisation and its evaluation.} Active-learning and classifier-based tools rank
+records so that reviewers meet relevant ones early \cite{przybyla2018prioritising,vandeschoot2021asreview},
+and stopping rules decide when the remaining queue may be left unread \cite{callaghan2020stopping}.
+Comparisons of supervised classifiers with a large language model found that recall varied substantially
+across datasets \cite{aigner2026comparing}, and a rapid review of generative AI in systematic reviews found
+the strongest evidence for title and abstract screening \cite{fleurence2026use}. A simulation of automated
+citation searching for 27 systematic reviews reported higher precision but lower recall than the original
+searches \cite{rajit2025automated}. These evaluations report recall for whole collections; none of them
+splits it by how often the relevant papers had been cited.
+
+\textbf{Position of this study.} Where the work above asks how much a tool finds, this study asks whose
+papers it finds, with a deliberately simple ranker so that one feature can be isolated, and with SYNERGY
+\cite{debruin2023synergy}, a public benchmark of screening datasets with inclusion labels, for the
+confirmatory test.
 
 \section{Research Questions}
 \label{sec:rq}
@@ -271,7 +293,7 @@ All relevant, 10\% & 63/64 & 0.984 & 52/64 & 0.812 \\
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.68\linewidth]{fig_recall_by_group.pdf}
+\includegraphics[width=0.58\linewidth]{fig_recall_by_group.pdf}
 \caption{Pooled Recall@20\% by citation group in the cross-fitted analysis. Labels give relevant records
 in the top $K$ over relevant records in the group.}
 \label{fig:recall}
@@ -337,28 +359,20 @@ under the citation-aware ranker four moved below the cutoff, to ranks between 12
 three fell from ranks 1--20 to ranks 10--93. Two were published in 2025 and two in 2024, so they have had
 little time to be cited; others are older papers that never attracted citations, for example a 2015 article
 on using full-text citation networks to improve keyword labelling. The seven records are spread across all
-five folds (three in one fold, one in each of the others). Among higher-citation relevant records, an
-Indonesian-language thesis-search system was missed by both rankers (ranks 514 and 384), and two records
-with six citations each, a library discovery-tool evaluation and a search system for the COVID-19 research
-collection, were retrieved by the citation-blind ranker (ranks 38 and 34) but not by the citation-aware
-ranker (ranks 120 and 117).
+five folds (three in one fold, one in each of the others).
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.68\linewidth]{fig_rank_shift_lower_citation.pdf}
+\includegraphics[width=0.58\linewidth]{fig_rank_shift_lower_citation.pdf}
 \caption{Rank within test fold of the seven relevant lower-citation records under each ranker. Smaller
 ranks are better; the dashed line marks the top-$K$ cutoff in a 551-record fold.}
 \label{fig:rankshift}
 \end{figure}
 
-\subsection{Language}
+\subsection{Language and resources}
 
 Of the 64 relevant records, 61 had English metadata, and one each Spanish, Indonesian and Thai. No publication
-language was verified. RQ3 cannot be addressed with these data.
-
-\subsection{Resources}
-
-Each ranker took about one second to fit and about 0.2 seconds to score a 551-record fold on a standard
+language was verified, so RQ3 cannot be addressed. Each ranker took about one second to fit on a standard
 CPU; the full cross-fitted analysis with 2,000 bootstrap replicates took about 30 seconds.
 
 \section{Study 2: Pre-registered Confirmatory Test on SYNERGY}
@@ -443,7 +457,7 @@ point; its overall recall was 0.326.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.74\linewidth]{fig_study2_per_review.pdf}
+\includegraphics[width=0.6\linewidth]{fig_study2_per_review.pdf}
 \caption{Study 2: lower-citation Recall@20\% in each review with at least five lower-citation relevant
 records ($n$ = number of such records).}
 \Description{Dot plot with one row per SYNERGY review, comparing lower-citation recall for the
@@ -487,14 +501,10 @@ artefact of collection. Seventy-two per cent of relevant records came from the c
 five seed papers, which are by construction connected to cited work; keyword routes with random sampling
 returned mostly off-topic records. A pool built differently could show a very different citation profile
 among relevant records, and the effect of the citation feature depends on that profile. Third, the records the author did not review keep AI labels, and the blind spot-check
-(Section~\ref{sec:spotcheck}) shows this matters: an estimated 35 relevant records are missing among them,
-and those found were all rarely cited. The AI screener's misses therefore fall on exactly the group this
-study measures, so the true lower-citation group is probably larger than 7. The effect held when the three
-found records were added, but a full review of the unreviewed records would be needed to settle it.
-
-Study 1 alone therefore does not show that citation features harm lower-citation recall. It shows that
-the measurement is feasible, that the direction is consistent with the concern, and that the denominators
-needed for a confirmatory test are far larger than its pool provides.
+(Section~\ref{sec:spotcheck}) suggests about 35 relevant records are missing among them, all of the found
+ones rarely cited, so the true lower-citation group is probably larger than 7. Study 1 alone therefore
+shows only that the measurement is feasible, that the direction is consistent with the concern, and that
+a confirmatory test needs far larger denominators.
 
 Study 2 supplied those denominators and confirmed the direction: with 977 lower-citation relevant
 records, removing the citation feature raised their Recall@20\% by 0.052. Two things changed relative to
@@ -505,10 +515,9 @@ redistributed recall: highly cited relevant records gained about as much as rare
 whole-collection recall figure would have shown nothing. That is the gap identified in the review that
 motivated this work: an evaluation that reports only overall recall cannot see this trade-off.
 
-For practice, the result suggests that a screening tool can drop a citation feature at no measurable
-cost in overall recall or precision, and that where the feature is kept, a simple reserved-slot re-rank
-recovers lower-citation recall for a small loss in overall recall. Both statements hold for a linear
-ranker on these reviews and would need testing on other models.
+For practice, a screening tool could drop the citation feature at no measurable cost in overall recall
+or precision; where it is kept, a reserved-slot re-rank recovers lower-citation recall for a small loss in
+overall recall. Both statements hold for a linear ranker on these reviews only.
 
 \section{Threats to Validity}
 \label{sec:threats}
@@ -545,17 +554,26 @@ reviews were published. Older papers had more time to be cited, which the age ad
 corrects, and a paper may have gained citations because a review included it. Either would make relevant
 records look more highly cited than they were at screening time.
 
+\section{Conclusion}
+\label{sec:conclusion}
+
+Adding a citation-count feature to a transparent screening ranker made rarely cited relevant papers less
+likely to reach the top of the queue. A small pilot on AI literature-curation records pointed in this
+direction but could not confirm it. A pre-registered test on 20 systematic reviews confirmed it: the
+citation-blind ranker retrieved 742 of 977 rarely cited relevant papers in the top 20\% against 691 for the
+citation-aware ranker, with no measurable change in overall recall or precision. The effect is small,
+varies between reviews and was measured with one linear model on mostly non-AI literature. Its main
+lesson is about evaluation: overall recall hid the trade-off entirely, so screening tools should report
+recall separately for rarely and highly cited relevant papers. Testing other ranking models, using
+citation counts as they stood at screening time, and building a large labelled pool of AI literature are
+the next steps.
+
 \section{Reproducibility and Data Availability}
 
-The collection, audit, screening-label, modelling and figure scripts, the frozen protocol, Amendments A2
-and A3, the split manifests, out-of-fold predictions and all metric files are in the project repository.
-An abstract-free metadata file and the final labels with their source (author or AI), rationales and
-confidence are shareable; abstract text is kept private. OpenAlex data are released under CC0. All analyses run on a CPU in under a minute.
-Re-running the two analysis commands on the final label file regenerates every Study 1 number and figure.
-For Study 2, the pre-registration, the two dated deviation notes, the frozen settings, the data manifest,
-the per-review and pooled metric files and the out-of-fold scores for all 150,154 records are in the
-repository; one script rebuilds the Study 2 tables from those scores, and a notebook repeats the whole
-study from the public SYNERGY release, which is in the public domain (CC0).
+All code, the frozen protocols, amendments, pre-registration, deviation notes, split manifests, out-of-fold
+predictions and metric files are in the project repository, with pinned library versions and a script that
+re-runs the analyses and checks them against the committed results. Abstract text from Study 1 is kept
+private; OpenAlex and SYNERGY data are released under CC0. All analyses run on a CPU in minutes.
 
 \begin{acks}
 \textbf{Use of generative AI.} Generative AI (Claude, Anthropic) was used to assist with collection-code

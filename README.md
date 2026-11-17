@@ -94,7 +94,7 @@ docs/                      full provenance: Prompt 01–18 outputs, protocol ame
 
 ```bash
 python -m pip install -r requirements.txt
-python -m pytest -q tests                        # 58 tests, ~30 s
+python -m pytest -q tests                        # 59 tests, ~30 s (about 100 s on a laptop)
 bash scripts/run_all.sh <model_input.csv> <tag> ai
 ```
 
@@ -128,6 +128,28 @@ cd src && python study2_verify_from_scores.py --results ../results/study2_confir
 ```
 
 To repeat Study 2 from the public SYNERGY release, run `notebooks/Study2_SYNERGY_Colab.ipynb` (about 15–20 minutes in Colab).
+
+## Compute requirements
+
+| Task | Hardware | Time |
+|---|---|---|
+| Tests | any CPU | 30–100 s |
+| Study 1, full pipeline (both rankers, 5 folds, 2,000 bootstrap replicates) | any CPU, under 1 GB RAM | about 1–2 min |
+| Study 2 table rebuilt from saved scores | any CPU | about 20 s |
+| Study 2 from scratch (download SYNERGY, 20 reviews × 5 folds × 4 rankers) | Google Colab CPU | 15–20 min, plus the download |
+| Figures | any CPU | about 10 s |
+
+No GPU is used. Study 1 collection used the OpenAlex API, whose free tier without a key is rate-limited (see Study 2 deviation D1).
+
+## Minimum reproduction checklist (for a second student)
+
+1. Clone the repository and create a clean environment with the pinned versions (see Reproduce).
+2. `python -m pytest -q tests` → all tests pass.
+3. `python scripts/viva_demo.py --skip-tests` → ends with `All re-run outputs identical to committed results: True` (Study 1 reference rankers and the Study 2 table, from public files).
+4. `python scripts/make_all_figures.py` → three figures identical to those in `paper/`.
+5. Optional, needs the private Study 1 input with abstracts: `python scripts/viva_demo.py --data <file>` → both Study 1 rankers retrained, results identical.
+6. Optional, needs internet: run `notebooks/Study2_SYNERGY_Colab.ipynb` → Study 2 from the public SYNERGY release.
+7. Compile `paper/main.tex` with pdfLaTeX → the paper PDF.
 
 ## Label provenance (Study 1)
 

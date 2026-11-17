@@ -24,7 +24,7 @@ All numbers below come from files in `results/`. Rehearse aloud at least twice a
 
 **Shorter version (no private data, about 1 minute):** `python scripts/viva_demo.py` runs the tests, the reference rankers and the Study 2 table.
 
-**Before the viva:** open Git Bash in the project folder and activate the project environment with `source ~/aitr_env/Scripts/activate` (you should see `(aitr_env)`). Without it the laptop's older libraries are used and the Study 1 interval comes out slightly different. Run the 58 tests once beforehand (`python -m pytest -q tests`, about 100 s) so you can say they pass, then use `--skip-tests` in the live demo.
+**Before the viva:** open Git Bash in the project folder and activate the project environment with `source ~/aitr_env/Scripts/activate` (you should see `(aitr_env)`). Without it the laptop's older libraries are used and the Study 1 interval comes out slightly different. Run the 59 tests once beforehand (`python -m pytest -q tests`, about 100 s) so you can say they pass, then use `--skip-tests` in the live demo.
 
 **Backup if the live run fails:** open `results/study2_confirmatory/study2_pooled_metrics.csv`, `results/run_20261105_reviewed_crossfit/crossfit_pooled_metrics.csv` and the figures in `paper/`.
 
