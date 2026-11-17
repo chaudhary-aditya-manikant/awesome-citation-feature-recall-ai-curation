@@ -105,3 +105,14 @@ def test_committed_study2_tables_are_consistent():
     c = pd.read_csv(r / "study2_paired_contrasts.csv")
     prim = c[(c.contrast == "citation_blind - citation_aware") & (c.metric == "recall_lower")].iloc[0]
     assert abs(prim.point - (742 - 691) / 977) < 1e-9 and prim.ci95_low > 0
+
+
+def test_review_level_check_on_committed_counts():
+    from study2_review_level_check import check, per_review
+    t = per_review(KIT / "results" / "study2_confirmatory")
+    out = check(t, reps=2000)
+    p = out["blind_minus_aware_lower_recall"]
+    assert len(t) == 20 and abs(p["point"] - 51 / 977) < 1e-12
+    assert p["review_level_ci95"][0] <= p["point"] <= p["review_level_ci95"][1]
+    assert out["sign_test"]["blind_better"] == 14 and out["sign_test"]["blind_worse"] == 1
+    assert out == check(t, reps=2000)  # deterministic

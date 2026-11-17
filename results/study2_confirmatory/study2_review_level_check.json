@@ -1,0 +1,43 @@
+{
+  "status": "POST_HOC_ROBUSTNESS_NOT_PREREGISTERED",
+  "added_on": "2026-11-17",
+  "reviews": 20,
+  "replicates": 10000,
+  "seed": 20261031,
+  "blind_minus_aware_lower_recall": {
+    "point": 0.052200614124872056,
+    "review_level_ci95": [
+      0.01381133901770566,
+      0.15176970194493555
+    ]
+  },
+  "fair_minus_aware_lower_recall": {
+    "point": 0.08085977482088025,
+    "review_level_ci95": [
+      0.03101424979044426,
+      0.21127437703141919
+    ]
+  },
+  "blind_minus_aware_overall_recall": {
+    "point": -0.004007285974499089,
+    "review_level_ci95": [
+      -0.020362324554486673,
+      0.002958162386061589
+    ]
+  },
+  "unweighted_mean_of_per_review_differences": {
+    "reviews_with_lower_citation_relevant": 19,
+    "mean": 0.12976258233695304,
+    "median": 0.09090909090909091,
+    "review_level_ci95": [
+      0.06517741327809978,
+      0.20327166165981958
+    ]
+  },
+  "sign_test": {
+    "blind_better": 14,
+    "same": 4,
+    "blind_worse": 1,
+    "two_sided_p": 0.0009765625
+  }
+}

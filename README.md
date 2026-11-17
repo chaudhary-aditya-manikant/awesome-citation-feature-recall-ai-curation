@@ -28,6 +28,7 @@ It follows from the author's literature review, *Recall Bias Toward Highly-Cited
 - **The feature redistributes recall:** higher-citation recall rose by 0.035 with the feature (descriptive, not a pre-registered contrast). Overall recall hides this.
 - **H2 supported.** The fair re-rank recovered 0.081 of lower-citation recall (CI 0.062–0.100) at a precision cost of 0.001.
 - **Not uniform.** Citation-blind was better in 14 reviews, equal in 4, worse in 1; the largest review showed no difference.
+- **Robust to which reviews are included** (post-hoc check): resampling whole reviews widens the interval to 0.014–0.152, still above zero; sign test 14 vs 1, p = 0.001. `src/study2_review_level_check.py`.
 - **Much smaller than the pilot** (0.052 vs 0.57): the pilot had the sign right and the size wrong.
 
 Evidence: `PREREGISTRATION_v2.md`, `configs/study2_protocol.json`, `results/study2_confirmatory/`, and two dated notes written before any result (`docs/06_Evidence_and_Logs/Study2_*.md`): the SYNERGY version, and the switch to the citation counts stored in SYNERGY after OpenAlex's rate limit stopped the live download.
@@ -111,6 +112,14 @@ python -m pip install -r requirements.txt
 **Input data.** The model input needs abstract text, which is not redistributed here (publisher copyright). To rebuild it, run `src/collect_openalex_candidates_balanced.py` with the parameters in `data/collection_audit_20261031/audit/collection_manifest.json` (snapshot 30 October 2026), then join the labels in `data/ai_provisional_20261105/final_screening_labels_reviewed_20261105.csv` on `openalex_id`. A fresh OpenAlex pull may differ slightly from the snapshot. **[TEST REQUIRED]** for a fresh pull; the committed results were produced from the snapshot.
 
 **Paper.** Compile `paper/main.tex` with pdfLaTeX (Overleaf or TeX Live): `pdflatex main; bibtex main; pdflatex main; pdflatex main`.
+
+**Figures.** Rebuild all three paper figures from the result files (about 10 s; opens them):
+
+```bash
+python scripts/make_all_figures.py
+```
+
+Run it after `scripts/viva_demo.py --data ...` and Figures 1–2 are drawn from the freshly retrained Study 1 results. The rebuilt figures are pixel-identical to the ones in `paper/`.
 
 **Study 2.** Rebuild the confirmatory table from the committed scores (no downloads, about 20 s):
 

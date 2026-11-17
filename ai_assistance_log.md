@@ -79,6 +79,12 @@ Detailed dated records: `docs/06_Evidence_and_Logs/AI_Assistance_and_Verificatio
 - *Verification:* protocol file refuses to run with undecided values; 56 tests before the run; pooled counts rebuilt identically from the committed scores for 150,154 records; per-review table checked against the pooled table.
 - *Outcome:* gate passed (977 / 1,768); H1 supported (Δ = 0.052, CI 0.033–0.068); H2 supported. `results/study2_confirmatory/`, Section 6 of the paper.
 
+**D5. Review-level robustness check (17 November 2026, post hoc)**
+- *AI proposal:* the pre-registered interval treats the 20 reviews as fixed; resample whole reviews to test whether the effect depends on which reviews happen to be in SYNERGY.
+- *Human decision:* the author asked for the check after discussing what an examiner would question; it is labelled post hoc.
+- *Verification:* computed from the committed per-review counts only; deterministic (fixed seed), covered by a test.
+- *Outcome:* interval 0.014–0.152 (still above zero); sign test 14 vs 1, p = 0.001. Paper Section 6.5.
+
 **E. Manuscript**
 - *AI proposal:* LaTeX draft built from the result files.
 - *Human decision:* checked text and numbers; limitations and label provenance stated explicitly.

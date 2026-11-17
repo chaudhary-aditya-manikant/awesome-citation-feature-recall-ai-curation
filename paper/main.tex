@@ -463,6 +463,14 @@ pooled estimate down: without it the difference is 0.083, and without the two la
 (Hall 2012), the counts were 9 of 9 against 7 of 9. The effect therefore depends on the review, and the
 pooled figure should be read as an average over reviews of very different size.
 
+Because the pre-registered interval treats the 20 reviews as fixed, a robustness check was added after the
+results were known (post hoc). Resampling whole reviews instead of papers within reviews (10,000
+replicates) widened the interval for the pooled difference to 0.014 to 0.152, which still excludes zero.
+Counting each review once, whatever its size, the average per-review difference was 0.130 (interval 0.065
+to 0.203), and the 14 against 1 split of reviews in favour of the citation-blind ranker would be unlikely
+if neither ranker were better (two-sided sign test, $p = 0.001$). The direction therefore does not depend
+on a few large reviews; its size is less certain than the pre-registered interval suggests.
+
 \section{Discussion}
 \label{sec:discussion}
 
@@ -518,9 +526,10 @@ relevant records (Section~\ref{sec:spotcheck}).
 \textbf{Statistical conclusion validity.} For Study 1, the lower-citation denominator is 7; the frozen gate failed;
 the cross-fitted analysis was added by amendment; a reporting guard was added after one output was
 seen; and the two reference rankers in Table~\ref{tab:posthoc} were added after the main results were known. All Study 1
-results are exploratory. Study 2 is confirmatory for H1 and H2 only. Its interval reflects resampling of
-records within folds, not variation between reviews or from refitting, and the effect differed between
-reviews; a single large review with no effect accounts for over a third of the lower-citation records.
+results are exploratory. Study 2 is confirmatory for H1 and H2 only. Its pre-registered interval reflects resampling of
+records within folds, not variation between reviews or from refitting; resampling whole reviews gives a
+wider interval (0.014 to 0.152), and the effect differed between reviews: a single large review with no
+effect accounts for over a third of the lower-citation records.
 The source of the citation counts was changed before any result was computed, for a reason unrelated to
 the outcome, but it is a deviation from the pre-registration. The higher-citation contrast and the
 leave-out figures are descriptive.
