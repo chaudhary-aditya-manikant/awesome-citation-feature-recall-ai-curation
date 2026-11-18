@@ -113,6 +113,14 @@ python -m pip install -r requirements.txt
 
 **Paper.** Compile `paper/main.tex` with pdfLaTeX (Overleaf or TeX Live): `pdflatex main; bibtex main; pdflatex main; pdflatex main`.
 
+**See the model work, step by step** (one fold, about 10 s; needs the private Study 1 input):
+
+```bash
+python scripts/explain_model.py --data data/private/model_input_reviewed_20261105_private.csv
+```
+
+It trains both rankers on fold 2 with the study's own code, prints the weight the citation-aware ranker puts on citations, shows where that fold's rarely cited relevant papers land in each ranking (the same ranks as in Figure 2), and shows a what-if with the same paper given 10 or 100 citations.
+
 **Figures.** Rebuild all three paper figures from the result files (about 10 s; opens them):
 
 ```bash
